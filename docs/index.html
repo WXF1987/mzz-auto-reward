@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MZZ全自动推文抽奖系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,99,132,0.1);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ff6384;
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #ff6384, #36a2eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: rgba(30,30,46,0.8);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid #ff6384;
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #36a2eb;
+        }
+        .btn {
+            background: linear-gradient(45deg, #ff6384, #ff9966);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .table-container {
+            overflow-x: auto;
+            background: rgba(30,30,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            background: rgba(255,99,132,0.2);
+            color: #ff6384;
+        }
+        .winner-card {
+            background: rgba(255,99,132,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ff6384;
+        }
+        #logPanel {
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            padding: 20px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-robot"></i> MZZ全自动推文抽奖系统</h1>
+            <p style="color: #aaa; margin-top: 10px;">实时监控 | 自动扫描 | 链上发放</p>
+            <div style="margin-top: 20px;">
+                <span id="systemStatus" style="background: #4CAF50; padding: 5px 20px; border-radius: 20px;">
+                    <i class="fas fa-circle"></i> 系统运行中
+                </span>
+                <span style="margin-left: 20px; color: #aaa;">
+                    最后更新: <span id="lastUpdate">--:--:--</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="stats-grid" id="statsGrid"></div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 30px;">
+            <div style="background: rgba(30,30,46,0.8); border-radius: 15px; padding: 25px;">
+                <h3 style="color: #ff6384;"><i class="fas fa-chart-line"></i> 奖励发放趋势</h3>
+                <div style="height: 300px;">
+                    <canvas id="rewardChart"></canvas>
+                </div>
+            </div>
+            <div style="background: rgba(30,30,46,0.8); border-radius: 15px; padding: 25px;">
+                <h3 style="color: #36a2eb;"><i class="fas fa-trophy"></i> 最新获奖者</h3>
+                <div id="recentWinners" style="max-height: 300px; overflow-y: auto;"></div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h3 style="color: #ff6384; margin-bottom: 20px;"><i class="fas fa-history"></i> 完整获奖记录</h3>
+            <table id="historyTable">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>钱包地址</th>
+                        <th>金额</th>
+                        <th>推文ID</th>
+                        <th>交易哈希</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody"></tbody>
+            </table>
+        </div>
+
+        <div style="background: rgba(30,30,46,0.8); border-radius: 15px; padding: 25px; margin-top: 30px;">
+            <h3 style="color: #36a2eb;"><i class="fas fa-terminal"></i> 系统日志</h3>
+            <div id="logPanel"></div>
+        </div>
+    </div>
+
+    <script>
+        async function loadData() {
+            try {
+                const response = await fetch('data.json?' + Date.now());
+                const data = await response.json();
+                updateUI(data);
+            } catch (error) {
+                console.error('加载数据失败:', error);
+            }
+        }
+
+        function updateUI(data) {
+            const totalRewards = data.winners.reduce((sum, w) => sum + w.amount, 0);
+            const today = new Date().toISOString().split('T')[0];
+            const todayWinners = data.winners.filter(w => w.time.startsWith(today));
+            const todayTotal = todayWinners.reduce((sum, w) => sum + w.amount, 0);
+
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-value">${totalRewards} USDT</div>
+                    <div style="color: #aaa;">总发放奖励</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${data.winners.length}</div>
+                    <div style="color: #aaa;">总获奖人数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${todayTotal} USDT</div>
+                    <div style="color: #aaa;">今日发放</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${data.candidates.length}</div>
+                    <div style="color: #aaa;">当前候选者</div>
+                </div>
+            `;
+
+            document.getElementById('recentWinners').innerHTML = data.winners.slice(0, 5).map(w => `
+                <div class="winner-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: #ff6384; font-weight: bold;">${w.amount} USDT</span>
+                        <span style="color: #aaa;">${new Date(w.time).toLocaleString('zh-CN')}</span>
+                    </div>
+                    <div style="font-family: monospace; color: #36a2eb; margin-top: 5px;">
+                        ${w.wallet.slice(0, 6)}...${w.wallet.slice(-4)}
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('historyBody').innerHTML = data.winners.slice(0, 20).map(w => `
+                <tr>
+                    <td>${new Date(w.time).toLocaleString('zh-CN')}</td>
+                    <td style="font-family: monospace;">${w.wallet.slice(0, 6)}...${w.wallet.slice(-4)}</td>
+                    <td style="color: #ff6384;">${w.amount} USDT</td>
+                    <td>${w.tweetId.slice(0, 15)}...</td>
+                    <td style="font-family: monospace; color: #aaa;">${w.txHash ? w.txHash.slice(0, 10) + '...' : '处理中'}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString('zh-CN');
+        }
+
+        // 初始化图表
+        const ctx = document.getElementById('rewardChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
+                datasets: [{
+                    label: '发放金额 (USDT)',
+                    borderColor: '#ff6384',
+                    data: [0, 0, 0, 0, 0, 0, 0]
+                }]
+            }
+        });
+
+        // 每30秒刷新数据
+        loadData();
+        setInterval(loadData, 30000);
+    </script>
+</body>
+</html>
