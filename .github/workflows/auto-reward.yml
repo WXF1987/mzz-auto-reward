@@ -36,4 +36,4 @@ jobs:
           git config --global user.email "434505492@qq.com"
           git add docs/data.json
           git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Auto update reward data $(date)"
-          git push https://WXF1987:${{ secrets.GITHUB_TOKEN }}@github.com/WXF1987/mzz-auto-reward.git
+          git push https://wxf1987:${{ secrets.GITHUB_TOKEN }}@github.com/wxf1987/mzz-auto-reward.git
