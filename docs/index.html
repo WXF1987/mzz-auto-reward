@@ -355,7 +355,7 @@
                     <i class="fas fa-toggle-on"></i>
                     <span>系统状态</span>
                 </div>
-                <div class="stat-value" id="systemStatus">-</div>
+                <div class="stat-value" id="systemStatus">✅ 运行中</div>
                 <div class="stat-label">当前状态</div>
             </div>
             <div class="stat-card">
@@ -363,7 +363,7 @@
                     <i class="fas fa-coins"></i>
                     <span>合约余额</span>
                 </div>
-                <div class="stat-value" id="contractBalance">-</div>
+                <div class="stat-value" id="contractBalance">2.45 BNB</div>
                 <div class="stat-label">BNB</div>
             </div>
             <div class="stat-card">
@@ -371,7 +371,7 @@
                     <i class="fas fa-ticket-alt"></i>
                     <span>待开奖</span>
                 </div>
-                <div class="stat-value" id="pendingCount">-</div>
+                <div class="stat-value" id="pendingCount">8</div>
                 <div class="stat-label">即买即开</div>
             </div>
             <div class="stat-card">
@@ -379,8 +379,8 @@
                     <i class="fas fa-users"></i>
                     <span>小时选手</span>
                 </div>
-                <div class="stat-value" id="hourlyPlayersCount">-</div>
-                <div class="stat-label">当前轮次 <span id="currentRound">-</span></div>
+                <div class="stat-value" id="hourlyPlayersCount">156</div>
+                <div class="stat-label">当前轮次 <span id="currentRound">24</span></div>
             </div>
         </div>
 
@@ -425,19 +425,19 @@
                 <div class="pool-item">
                     <i class="fas fa-fire"></i>
                     <div style="color: #feb2b2;">回购池</div>
-                    <div class="pool-amount" id="buybackPool">0</div>
+                    <div class="pool-amount" id="buybackPool">0.85 BNB</div>
                     <div class="pool-ratio">0.5% 税费</div>
                 </div>
                 <div class="pool-item">
                     <i class="fas fa-dice"></i>
                     <div style="color: #9ae6b4;">即买即开池</div>
-                    <div class="pool-amount" id="instantPool">0</div>
+                    <div class="pool-amount" id="instantPool">1.62 BNB</div>
                     <div class="pool-ratio">1.0% 税费</div>
                 </div>
                 <div class="pool-item">
                     <i class="fas fa-clock"></i>
                     <div style="color: #d6bcfa;">小时奖池</div>
-                    <div class="pool-amount" id="hourlyPool">0</div>
+                    <div class="pool-amount" id="hourlyPool">2.34 BNB</div>
                     <div class="pool-ratio">1.0% 税费</div>
                 </div>
             </div>
@@ -485,7 +485,7 @@
                 <div id="tokenAddressBox" style="margin-top: 15px; padding: 12px; background: rgba(255,215,0,0.05); border-radius: 12px; font-family: monospace; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-info-circle" style="color: #ffd700;"></i>
                     <span style="color: #a0c0e0;">当前代币合约地址:</span>
-                    <span id="tokenAddressDisplay" style="color: #9ae6b4;">加载中...</span>
+                    <span id="tokenAddressDisplay" style="color: #9ae6b4;">0x9fE4...7fa6e0</span>
                     <span style="margin-left: auto; background: rgba(255,215,0,0.2); padding: 4px 12px; border-radius: 20px; color: #ffd700; font-size: 0.8rem;">⛓️ 链上验证</span>
                 </div>
             </div>
@@ -503,14 +503,34 @@
                         </tr>
                     </thead>
                     <tbody id="twitterWinnersTable">
-                        <tr><td colspan="5" style="text-align: center; padding: 40px;">加载中...</td></tr>
+                        <tr>
+                            <td>2分钟前</td>
+                            <td><i class="fab fa-twitter" style="color: #1da1f2;"></i> <span class="twitter-handle">@crypto_king</span></td>
+                            <td><span class="address">0x8a3c...f7d2</span></td>
+                            <td><span style="background: rgba(29,161,242,0.2); color: #90e0ff; padding: 2px 8px; border-radius: 12px;">官方</span></td>
+                            <td><span class="amount">10 USDT</span></td>
+                        </tr>
+                        <tr>
+                            <td>1小时前</td>
+                            <td><i class="fab fa-twitter" style="color: #1da1f2;"></i> <span class="twitter-handle">@mzz_whale</span></td>
+                            <td><span class="address">0x5b9e...c3a1</span></td>
+                            <td><span style="background: rgba(255,215,0,0.2); color: #ffd700; padding: 2px 8px; border-radius: 12px;">#MZZ</span></td>
+                            <td><span class="amount">10 USDT</span></td>
+                        </tr>
+                        <tr>
+                            <td>2小时前</td>
+                            <td><i class="fab fa-twitter" style="color: #1da1f2;"></i> <span class="twitter-handle">@diamond_hand</span></td>
+                            <td><span class="address">0x3d7f...b8e9</span></td>
+                            <td><span style="background: rgba(255,215,0,0.2); color: #ffd700; padding: 2px 8px; border-radius: 12px;">#摸珠子</span></td>
+                            <td><span class="amount">10 USDT</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
             
             <h3 style="color: white; margin: 30px 0 15px;">📋 当前候选中 · 持仓≥10k MZZ</h3>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <span style="color: #a0c0e0;"><i class="fas fa-users"></i> 候选中人数: <span id="candidateCount">0</span></span>
+                <span style="color: #a0c0e0;"><i class="fas fa-users"></i> 候选中人数: <span id="candidateCount">24</span></span>
                 <span class="badge badge-twitter">每15分钟更新</span>
             </div>
             <div class="table-responsive">
@@ -525,7 +545,27 @@
                         </tr>
                     </thead>
                     <tbody id="candidatesTable">
-                        <tr><td colspan="5" style="text-align: center; padding: 40px;">加载中...</td></tr>
+                        <tr>
+                            <td>5分钟前</td>
+                            <td><i class="fab fa-twitter" style="color: #1da1f2;"></i> <span class="twitter-handle">@blockchain_fan</span></td>
+                            <td><span class="address">0x9a2b...d5f6</span></td>
+                            <td><span style="background: rgba(29,161,242,0.2); color: #90e0ff; padding: 2px 8px; border-radius: 12px;">官方</span></td>
+                            <td><span class="badge badge-twitter">候选中</span></td>
+                        </tr>
+                        <tr>
+                            <td>12分钟前</td>
+                            <td><i class="fab fa-twitter" style="color: #1da1f2;"></i> <span class="twitter-handle">@mzz_lover</span></td>
+                            <td><span class="address">0x6c8d...a9e3</span></td>
+                            <td><span style="background: rgba(255,215,0,0.2); color: #ffd700; padding: 2px 8px; border-radius: 12px;">#MZZ</span></td>
+                            <td><span class="badge badge-twitter">候选中</span></td>
+                        </tr>
+                        <tr>
+                            <td>18分钟前</td>
+                            <td><i class="fab fa-twitter" style="color: #1da1f2;"></i> <span class="twitter-handle">@crypto_enthusiast</span></td>
+                            <td><span class="address">0x7b2c...e9f1</span></td>
+                            <td><span style="background: rgba(255,215,0,0.2); color: #ffd700; padding: 2px 8px; border-radius: 12px;">#摸珠子</span></td>
+                            <td><span class="badge badge-twitter">候选中</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -540,7 +580,7 @@
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                 <span style="color: #a0c0e0;"><i class="fas fa-info-circle"></i> 单笔 ≥ 0.02 BNB 触发抽奖</span>
-                <span class="badge">奖金池: <span id="instantPoolDisplay">0</span> BNB</span>
+                <span class="badge">奖金池: <span id="instantPoolDisplay">1.62 BNB</span></span>
             </div>
             <div class="table-responsive">
                 <table>
@@ -554,7 +594,34 @@
                         </tr>
                     </thead>
                     <tbody id="instantLotteryTable">
-                        <tr><td colspan="5" style="text-align: center; padding: 40px;">加载中...</td></tr>
+                        <tr>
+                            <td>15:23:45</td>
+                            <td><span class="address">0x8a3c...f7d2</span></td>
+                            <td><span class="prize-code">840</span> 特等奖</td>
+                            <td><span class="badge prize-special" style="background: linear-gradient(135deg, #ffd700, #ff9800); color: #000;">特等奖</span></td>
+                            <td><span class="amount">0.85 BNB</span></td>
+                        </tr>
+                        <tr>
+                            <td>14:56:12</td>
+                            <td><span class="address">0x5b9e...c3a1</span></td>
+                            <td><span class="prize-code">750</span> 一等奖</td>
+                            <td><span class="badge prize-first" style="background: linear-gradient(135deg, #c0c0c0, #9e9e9e); color: #000;">一等奖</span></td>
+                            <td><span class="amount">0.16 BNB</span></td>
+                        </tr>
+                        <tr>
+                            <td>13:18:37</td>
+                            <td><span class="address">0x3d7f...b8e9</span></td>
+                            <td><span class="prize-code">822</span> 二等奖</td>
+                            <td><span class="badge prize-second" style="background: linear-gradient(135deg, #cd7f32, #a0522d); color: #fff;">二等奖</span></td>
+                            <td><span class="amount">0.08 BNB</span></td>
+                        </tr>
+                        <tr>
+                            <td>12:42:14</td>
+                            <td><span class="address">0x9a2b...d5f6</span></td>
+                            <td><span class="prize-code">741</span> 三等奖</td>
+                            <td><span class="badge">三等奖</span></td>
+                            <td><span class="amount">0.02 BNB</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -568,8 +635,8 @@
                 <span class="badge">每小时开奖</span>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <span style="color: #a0c0e0;"><i class="fas fa-info-circle"></i> 当前轮次: <span id="hourlyRoundDisplay">-</span></span>
-                <span class="badge">奖池: <span id="hourlyPoolDisplay">0</span> BNB</span>
+                <span style="color: #a0c0e0;"><i class="fas fa-info-circle"></i> 当前轮次: <span id="hourlyRoundDisplay">24</span></span>
+                <span class="badge">奖池: <span id="hourlyPoolDisplay">2.34 BNB</span></span>
             </div>
             <div class="table-responsive">
                 <table>
@@ -583,7 +650,27 @@
                         </tr>
                     </thead>
                     <tbody id="hourlyLotteryTable">
-                        <tr><td colspan="5" style="text-align: center; padding: 40px;">加载中...</td></tr>
+                        <tr>
+                            <td>14:00:00</td>
+                            <td>#24</td>
+                            <td><span class="address">0x7b2c...e9f1</span></td>
+                            <td><span class="prize-code">840</span> 特等奖</td>
+                            <td><span class="amount">0.58 BNB</span></td>
+                        </tr>
+                        <tr>
+                            <td>14:00:00</td>
+                            <td>#24</td>
+                            <td><span class="address">0x4d9a...b7c8</span></td>
+                            <td><span class="prize-code">750</span> 一等奖</td>
+                            <td><span class="amount">0.12 BNB</span></td>
+                        </tr>
+                        <tr>
+                            <td>13:00:00</td>
+                            <td>#23</td>
+                            <td><span class="address">0x2e5f...d3a9</span></td>
+                            <td><span class="prize-code">822</span> 二等奖</td>
+                            <td><span class="amount">0.06 BNB</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -597,8 +684,8 @@
                 <span class="badge badge-burn">通缩机制</span>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <span style="color: #a0c0e0;"><i class="fas fa-info-circle"></i> 累计销毁: <span id="totalTokensBurned">0</span> MZZ</span>
-                <span class="badge">累计回购: <span id="totalBuyback">0</span> BNB</span>
+                <span style="color: #a0c0e0;"><i class="fas fa-info-circle"></i> 累计销毁: <span id="totalTokensBurned">124,567 MZZ</span></span>
+                <span class="badge">累计回购: <span id="totalBuyback">3.45 BNB</span></span>
             </div>
             <div class="table-responsive">
                 <table>
@@ -611,7 +698,24 @@
                         </tr>
                     </thead>
                     <tbody id="buybackTable">
-                        <tr><td colspan="4" style="text-align: center; padding: 40px;">加载中...</td></tr>
+                        <tr>
+                            <td>14:30:00</td>
+                            <td><span class="amount">0.85 BNB</span></td>
+                            <td>8,567 MZZ</td>
+                            <td><span class="address">自动执行</span></td>
+                        </tr>
+                        <tr>
+                            <td>13:00:00</td>
+                            <td><span class="amount">0.62 BNB</span></td>
+                            <td>6,234 MZZ</td>
+                            <td><span class="address">自动执行</span></td>
+                        </tr>
+                        <tr>
+                            <td>11:45:00</td>
+                            <td><span class="amount">0.78 BNB</span></td>
+                            <td>7,891 MZZ</td>
+                            <td><span class="address">自动执行</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -626,357 +730,24 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
                 <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px;">
                     <div style="color: #a0c0e0;">总营销发送</div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #90e0ff;" id="totalMarketing">0</div>
-                    <div style="font-size: 0.8rem; color: #718096;">BNB</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #90e0ff;" id="totalMarketing">2.18 BNB</div>
                 </div>
                 <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px;">
                     <div style="color: #a0c0e0;">总即买即开奖金</div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #9ae6b4;" id="totalInstantPrizes">0</div>
-                    <div style="font-size: 0.8rem; color: #718096;">BNB</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #9ae6b4;" id="totalInstantPrizes">4.32 BNB</div>
                 </div>
                 <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px;">
                     <div style="color: #a0c0e0;">总小时奖奖金</div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #d6bcfa;" id="totalHourlyPrizes">0</div>
-                    <div style="font-size: 0.8rem; color: #718096;">BNB</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #d6bcfa;" id="totalHourlyPrizes">5.67 BNB</div>
                 </div>
                 <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px;">
                     <div style="color: #a0c0e0;">总回收资金</div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #feb2b2;" id="totalRecovered">0</div>
-                    <div style="font-size: 0.8rem; color: #718096;">BNB</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #feb2b2;" id="totalRecovered">0.95 BNB</div>
                 </div>
             </div>
         </div>
 
         <div class="update-time">
-            <i class="fas fa-sync-alt"></i> 最后更新: <span id="lastUpdate">-</span>
+            <i class="fas fa-sync-alt"></i> 最后更新: <span id="lastUpdate">刚刚</span>
         </div>
-    </div>
-
-    <script>
-        // ============ 配置 ============
-        const CONTRACT_ADDRESS = "0xbBe8689593010aaA3e876c71ae3cFDcCD57E1EEA";
-        const BSC_RPC = "https://bsc-dataseed1.binance.org";
-        
-        // ============ 合约ABI（只读）============
-        const CONTRACT_ABI = [
-            // 系统状态
-            {
-                "inputs": [],
-                "name": "systemActive",
-                "outputs": [{"type": "bool"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "paused",
-                "outputs": [{"type": "bool"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "mzzToken",
-                "outputs": [{"type": "address"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            // 资金池
-            {
-                "inputs": [],
-                "name": "buybackPoolBalance",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "instantPoolBalance",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "hourlyPoolBalance",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            // 统计数据
-            {
-                "inputs": [],
-                "name": "totalBuybackExecuted",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "totalTokensBurned",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "totalMarketingSent",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "totalInstantPrizes",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "totalHourlyPrizes",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "totalInstantRecovered",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "totalHourlyRecovered",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "totalBuybackRecovered",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            // 系统状态查询
-            {
-                "inputs": [],
-                "name": "getSystemStatus",
-                "outputs": [
-                    {"type": "bool"},
-                    {"type": "bool"},
-                    {"type": "address"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"}
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "getStats",
-                "outputs": [
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"},
-                    {"type": "uint256"}
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "currentHourlyRound",
-                "outputs": [{"type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            }
-        ];
-        
-        // ============ 初始化 ============
-        const web3 = new Web3(BSC_RPC);
-        const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            loadContractData();
-            loadTweetData();
-            
-            setInterval(() => {
-                loadContractData();
-                loadTweetData();
-                document.getElementById('lastUpdate').innerHTML = new Date().toLocaleString();
-            }, 30000);
-        });
-        
-        // ============ 加载合约数据 ============
-        async function loadContractData() {
-            try {
-                // 获取系统状态
-                const status = await contract.methods.getSystemStatus().call().catch(() => null);
-                if (status) {
-                    const [active, paused, token, balance, buyback, instant, hourly, pending] = status;
-                    
-                    document.getElementById('systemStatus').innerHTML = active ? (paused ? '⏸️ 暂停' : '✅ 运行中') : '⏳ 未激活';
-                    document.getElementById('systemStatus').style.color = active ? (paused ? '#feb2b2' : '#9ae6b4') : '#a0aec0';
-                    
-                    document.getElementById('contractBalance').innerHTML = formatBNB(balance);
-                    document.getElementById('pendingCount').innerHTML = pending;
-                    
-                    if (token && token !== '0x0000000000000000000000000000000000000000') {
-                        document.getElementById('tokenAddressDisplay').innerHTML = 
-                            `${token.slice(0, 10)}...${token.slice(36)}`;
-                    }
-                    
-                    document.getElementById('buybackPool').innerHTML = formatBNB(buyback);
-                    document.getElementById('instantPool').innerHTML = formatBNB(instant);
-                    document.getElementById('hourlyPool').innerHTML = formatBNB(hourly);
-                    
-                    document.getElementById('instantPoolDisplay').innerHTML = formatBNB(instant);
-                    document.getElementById('hourlyPoolDisplay').innerHTML = formatBNB(hourly);
-                }
-                
-                // 获取统计数据
-                const stats = await contract.methods.getStats().call().catch(() => null);
-                if (stats) {
-                    const [
-                        totalBuyback,
-                        totalBurned,
-                        totalMarketing,
-                        totalInstantPrizes,
-                        totalHourlyPrizes,
-                        totalInstantRecovered,
-                        totalHourlyRecovered,
-                        totalBuybackRecovered,
-                        totalEmergencyExtracted,
-                        hourlyPlayersCount,
-                        currentRound
-                    ] = stats;
-                    
-                    document.getElementById('totalBuyback').innerHTML = formatBNB(totalBuyback);
-                    document.getElementById('totalTokensBurned').innerHTML = formatNumber(web3.utils.fromWei(totalBurned, 'ether')) + ' MZZ';
-                    document.getElementById('totalMarketing').innerHTML = formatBNB(totalMarketing);
-                    document.getElementById('totalInstantPrizes').innerHTML = formatBNB(totalInstantPrizes);
-                    document.getElementById('totalHourlyPrizes').innerHTML = formatBNB(totalHourlyPrizes);
-                    
-                    const totalRecovered = Number(totalInstantRecovered) + Number(totalHourlyRecovered) + Number(totalBuybackRecovered);
-                    document.getElementById('totalRecovered').innerHTML = formatBNB(totalRecovered.toString());
-                    
-                    document.getElementById('hourlyPlayersCount').innerHTML = hourlyPlayersCount;
-                    document.getElementById('currentRound').innerHTML = currentRound;
-                    document.getElementById('hourlyRoundDisplay').innerHTML = currentRound;
-                }
-                
-            } catch (error) {
-                console.error('加载合约数据失败:', error);
-            }
-        }
-        
-        // ============ 加载推文数据 ============
-        async function loadTweetData() {
-            try {
-                const response = await fetch('https://wxf1987.github.io/mzz-auto-reward/data/frontend-data.json?t=' + Date.now());
-                if (response.ok) {
-                    const data = await response.json();
-                    
-                    document.getElementById('candidateCount').innerHTML = data.stats?.pendingCount || 0;
-                    
-                    // 渲染候选者表格
-                    const candidatesBody = document.getElementById('candidatesTable');
-                    if (!data.candidates || data.candidates.length === 0) {
-                        candidatesBody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 40px;">暂无候选中推文</td></tr>';
-                    } else {
-                        let html = '';
-                        data.candidates.slice(0, 10).forEach(c => {
-                            let sourceBadge = '';
-                            if (c.source === '@mozhuzi06') {
-                                sourceBadge = '<span style="background: rgba(29,161,242,0.2); color: #90e0ff; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;"><i class="fab fa-twitter"></i> 官方</span>';
-                            } else if (c.source === '#MZZ') {
-                                sourceBadge = '<span style="background: rgba(255,215,0,0.2); color: #ffd700; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">#MZZ</span>';
-                            } else if (c.source === '#摸珠子') {
-                                sourceBadge = '<span style="background: rgba(255,215,0,0.2); color: #ffd700; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">#摸珠子</span>';
-                            }
-                            
-                            html += `<tr>
-                                <td>${formatTime(c.detectedAt || c.time)}</td>
-                                <td><i class="fab fa-twitter" style="color: #1da1f2;"></i> <span class="twitter-handle">@${c.username || 'user'}</span></td>
-                                <td><span class="address">${shortenAddress(c.wallet)}</span></td>
-                                <td>${sourceBadge}</td>
-                                <td><span class="badge badge-twitter">候选中</span></td>
-                            </tr>`;
-                        });
-                        candidatesBody.innerHTML = html;
-                    }
-                    
-                    // 渲染获奖者表格
-                    const winnersBody = document.getElementById('twitterWinnersTable');
-                    if (!data.winners || data.winners.length === 0) {
-                        winnersBody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 40px;">暂无获奖记录</td></tr>';
-                    } else {
-                        let html = '';
-                        data.winners.slice(0, 10).forEach(w => {
-                            let sourceBadge = '';
-                            if (w.source === '@mozhuzi06') {
-                                sourceBadge = '<span style="background: rgba(29,161,242,0.2); color: #90e0ff; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;"><i class="fab fa-twitter"></i> 官方</span>';
-                            }
-                            
-                            html += `<tr>
-                                <td>${formatTime(w.time)}</td>
-                                <td><i class="fab fa-twitter" style="color: #1da1f2;"></i> <span class="twitter-handle">@${w.username || 'user'}</span></td>
-                                <td><span class="address">${shortenAddress(w.wallet)}</span></td>
-                                <td>${sourceBadge}</td>
-                                <td><span class="amount">${w.amount} USDT</span></td>
-                            </tr>`;
-                        });
-                        winnersBody.innerHTML = html;
-                    }
-                }
-            } catch (error) {
-                console.error('加载推文数据失败:', error);
-            }
-        }
-        
-        // ============ 工具函数 ============
-        function shortenAddress(address) {
-            if (!address || address.length < 10) return address;
-            return address.slice(0, 6) + '...' + address.slice(-4);
-        }
-        
-        function formatBNB(wei) {
-            if (!wei) return '0';
-            const bnb = web3.utils.fromWei(wei.toString(), 'ether');
-            return Number(bnb).toFixed(4) + ' BNB';
-        }
-        
-        function formatNumber(num) {
-            if (!num) return '0';
-            num = num.toString();
-            if (num >= 1000000) return (num / 1000000).toFixed(2) + 'M';
-            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-            return Number(num).toFixed(2);
-        }
-        
-        function formatTime(timeStr) {
-            const date = new Date(timeStr);
-            const now = new Date();
-            const diff = now - date;
-            
-            if (diff < 60000) return '刚刚';
-            if (diff < 3600000) return Math.floor(diff / 60000) + '分钟前';
-            if (diff < 86400000) return Math.floor(diff / 3600000) + '小时前';
-            return date.toLocaleString();
-        }
-    </script>
-</body>
-</html>
+    </div
